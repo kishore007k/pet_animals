@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./style";
 import { Text, View, ImageBackground, Image } from "react-native";
 
-const LandingPage = () => {
+const LandingPageOne = () => {
 	return (
 		<View style={styles.imageFilter}>
 			<ImageBackground
@@ -34,4 +34,4 @@ const LandingPage = () => {
 	);
 };
 
-export default LandingPage;
+export default LandingPageOne;

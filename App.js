@@ -1,12 +1,14 @@
-import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
-import LandingPage from "./app/components/LandingPage";
+import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, View } from 'react-native';
+import LandingPageOne from './app/components/LandingPageOne';
+import LandingPageTwo from './app/components/LandingPageTwo';
 
 export default function App() {
 	return (
 		<View style={styles.container}>
-			<LandingPage />
+			{/* <LandingPageOne />  Once the react-native navigation is finished uncomment <LandingPageOne /> and delete the comments */}
+			<LandingPageTwo />
 			<StatusBar style="auto" />
 		</View>
 	);
@@ -15,8 +17,9 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-	},
+		flexDirection: 'row',
+		backgroundColor: '#fff',
+		alignItems: 'center',
+		justifyContent: 'center'
+	}
 });

@@ -44,7 +44,7 @@ export default styles = StyleSheet.create({
 		width: "100%",
 		height: 30,
 		position: "relative",
-		top: 180,
+		top: 174,
 		paddingLeft: 20,
 		paddingRight: 20,
 	},
