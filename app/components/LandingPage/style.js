@@ -33,35 +33,33 @@ export default styles = StyleSheet.create({
 		color: "#fff",
 	},
 	icon: {
-		maxWidth: 211.78,
-		height: 209.44,
+		maxWidth: 210,
+		height: 210,
 	},
 	navigatorContainer: {
 		flexDirection: "row",
-		justifyContent: "center",
+		justifyContent: "space-between",
 		alignItems: "center",
+		maxWidth: "100%",
 		width: "100%",
 		height: 30,
-		position: "absolute",
-		bottom: 50,
-		paddingRight: 20,
+		position: "relative",
+		top: 180,
 		paddingLeft: 20,
+		paddingRight: 20,
 	},
 	skipBtn: {
 		color: "#F95A7E",
 		fontSize: 18,
 		fontWeight: "bold",
-		position: "relative",
-		right: 130,
 	},
 	nextBtn: {
 		color: "#F95A7E",
 		fontSize: 18,
 		fontWeight: "bold",
-		left: 130,
 	},
 	first: {
-		width: 20,
+		width: 25,
 		height: 10,
 		backgroundColor: "#F95A7E",
 		borderRadius: 8,
@@ -72,10 +70,10 @@ export default styles = StyleSheet.create({
 		backgroundColor: "#DEDEDE",
 		borderRadius: 10,
 	},
-	navDots: {
+	dotsNav: {
 		flexDirection: "row",
+		width: "50%",
 		justifyContent: "space-evenly",
 		alignItems: "center",
-		width: "100%",
-	},
+	}
 });

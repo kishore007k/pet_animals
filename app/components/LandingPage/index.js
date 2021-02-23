@@ -17,13 +17,17 @@ const LandingPage = () => {
 				/>
 				<Text style={styles.title}>pet animals</Text>
 				<View style={styles.navigatorContainer}>
-					<Text style={styles.skipBtn}>Skip</Text>
-					<Text style={styles.navBots}>
+					<View>
+						<Text style={styles.skipBtn}>Skip</Text>
+					</View>
+					<View style={styles.dotsNav}>
 						<View style={styles.first} />
 						<View style={styles.dot} />
 						<View style={styles.dot} />
-					</Text>
-					<Text style={styles.nextBtn}>Next</Text>
+					</View>
+					<View>
+						<Text style={styles.nextBtn}>Next</Text>
+					</View>
 				</View>
 			</View>
 		</View>
