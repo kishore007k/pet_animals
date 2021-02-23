@@ -1,14 +1,22 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import LandingPageOne from './app/components/LandingPageOne';
-import LandingPageTwo from './app/components/LandingPageTwo';
+import { LandingPageOne, LandingPageTwo, LandingPageThree, LandingPageFour } from './app/components/LandingPageOne';
+
+// The following imports are created as individual files/components and imported as defaults
+// import LandingPageOne from './app/components/LandingPageOne';
+// import LandingPageTwo from './app/components/LandingPageTwo';
+// import LandingPageThree from './app/components/LandingPageThree';
+// import LandingPageFour from './app/components/LandingPageFour';
 
 export default function App() {
 	return (
 		<View style={styles.container}>
-			{/* <LandingPageOne />  Once the react-native navigation is finished uncomment <LandingPageOne /> and delete the comments */}
-			<LandingPageTwo />
+			{/* Once the react-native navigation is finished uncomment this and delete the comments */}
+			<LandingPageOne />
+			{/* <LandingPageTwo /> */}
+			{/* <LandingPageThree /> */}
+			{/* <LandingPageFour /> */}
 			<StatusBar style="auto" />
 		</View>
 	);
