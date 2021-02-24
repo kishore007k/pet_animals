@@ -1,11 +1,12 @@
 import React from 'react'
 import { View } from 'react-native';
-import LoginAndSignUpPage from '../components/LoginAndSignUpPage';
+import {LoginPage, SignUpPage} from '../components/LoginAndSignUpPage';
 
 const LoginAndSignUpScreen = () => {
     return (
         <View>
-            <LoginAndSignUpPage />
+            <LoginPage />
+            {/* <SignUpPage /> */}
         </View>
     )
 }
