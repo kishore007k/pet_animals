@@ -4,7 +4,7 @@
 
 - [ ] Download all custom fonts and centralize them.
 - [ ] Add all the assets like `images`, `fonts`, `icons` inside the _app/assets_ folder
-- [ ] Centralize all colors and themes
+- [x] Centralize all colors and themes
 
 ## Contribution Guide:-
 
@@ -15,6 +15,8 @@
 ## Rules:-
 
 Before making the commit to the repo it should be tested and verified by all three members.
+
+All the colors, gradients, fontSize & fontWeight that are used in this project are centralized and listed out in the `app/assets/constants` folder. Use these to apply colors and font styles to all the components and screens.
 
 ## Members:-
 
