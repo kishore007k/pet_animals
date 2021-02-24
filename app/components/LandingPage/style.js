@@ -1,11 +1,14 @@
 import { StyleSheet } from "react-native";
+import colors from "../../assets/constants/colors";
+import fonts from "../../assets/constants/fonts";
 
+// First
 export const stylesOne = StyleSheet.create({
 	image: {
 		position: "absolute",
 		width: "100%",
 		height: "100%",
-		overlayColor: "#162593",
+		overlayColor: colors.primary,
 		resizeMode: "cover",
 	},
 	imageFilter: {
@@ -18,7 +21,7 @@ export const stylesOne = StyleSheet.create({
 		bottom: 0,
 		right: 0,
 		left: 0,
-		backgroundColor: "#162593",
+		backgroundColor: colors.primary,
 		opacity: 0.6,
 	},
 	mainText: {
@@ -27,10 +30,10 @@ export const stylesOne = StyleSheet.create({
 		height: "100%",
 	},
 	title: {
-		fontSize: 40,
-		fontWeight: "bold",
+		fontSize: fonts.title,
+		fontWeight: fonts.fontWeight.bold,
 		textTransform: "uppercase",
-		color: "#fff",
+		color: colors.white,
 	},
 	icon: {
 		maxWidth: 210,
@@ -49,25 +52,25 @@ export const stylesOne = StyleSheet.create({
 		paddingRight: 20,
 	},
 	skipBtn: {
-		color: "#F95A7E",
-		fontSize: 18,
-		fontWeight: "bold",
+		color: colors.pink,
+		fontSize: fonts.mediumText,
+		fontWeight: fonts.fontWeight.bold,
 	},
 	nextBtn: {
-		color: "#F95A7E",
-		fontSize: 18,
-		fontWeight: "bold",
+		color: colors.pink,
+		fontSize: fonts.mediumText,
+		fontWeight: fonts.fontWeight.bold,
 	},
 	first: {
 		width: 25,
 		height: 10,
-		backgroundColor: "#F95A7E",
+		backgroundColor: colors.pink,
 		borderRadius: 8,
 	},
 	dot: {
 		width: 10,
 		height: 10,
-		backgroundColor: "#DEDEDE",
+		backgroundColor: colors.border,
 		borderRadius: 10,
 	},
 	dotsNav: {
@@ -101,15 +104,15 @@ export const stylesTwo = StyleSheet.create({
         marginRight: 36,
     },
     mainTitle: {
-        color: "#515151",
-        fontSize: 18,
-        fontWeight: "bold",
+        color: colors.darkGrey,
+        fontSize: fonts.mediumText,
+        fontWeight: fonts.fontWeight.bold,
         lineHeight: 24,
         marginBottom: 5,
     },
     para: {
-        color: "#515151",
-        fontSize: 14,
+        color: colors.darkGrey,
+        fontSize: fonts.smallText,
         marginBottom: 96,
     },
     navigatorContainer: {
@@ -120,25 +123,25 @@ export const stylesTwo = StyleSheet.create({
         alignItems: "center",
 	},
 	skipBtn: {
-		color: "#F95A7E",
-		fontSize: 18,
-		fontWeight: "bold",
+		color: colors.pink,
+		fontSize: fonts.mediumText,
+		fontWeight: fonts.fontWeight.bold,
 	},
 	nextBtn: {
-		color: "#F95A7E",
-		fontSize: 18,
-		fontWeight: "bold",
+		color: colors.pink,
+		fontSize: fonts.mediumText,
+		fontWeight: fonts.fontWeight.bold,
 	},
 	activeDot: {
 		width: 25,
 		height: 10,
-		backgroundColor: "#F95A7E",
+		backgroundColor: colors.pink,
 		borderRadius: 8,
 	},
 	dot: {
 		width: 10,
 		height: 10,
-		backgroundColor: "#DEDEDE",
+		backgroundColor: colors.border,
 		borderRadius: 10,
 	},
 	dotsNav: {
@@ -172,15 +175,15 @@ export const stylesThree = StyleSheet.create({
         marginRight: 36,
     },
     mainTitle: {
-        color: "#515151",
-        fontSize: 18,
-        fontWeight: "bold",
+        color: colors.darkGrey,
+        fontSize: fonts.mediumText,
+        fontWeight: fonts.fontWeight.bold,
         lineHeight: 24,
         marginBottom: 5,
     },
     para: {
-        color: "#515151",
-        fontSize: 14,
+        color: colors.darkGrey,
+        fontSize: fonts.smallText,
         marginBottom: 96,
     },
     navigatorContainer: {
@@ -191,25 +194,25 @@ export const stylesThree = StyleSheet.create({
         alignItems: "center",
 	},
 	skipBtn: {
-		color: "#F95A7E",
-		fontSize: 18,
-		fontWeight: "bold",
+		color: colors.pink,
+		fontSize: fonts.mediumText,
+		fontWeight: fonts.fontWeight.bold,
 	},
 	nextBtn: {
-		color: "#F95A7E",
-		fontSize: 18,
-		fontWeight: "bold",
+		color: colors.pink,
+		fontSize: fonts.mediumText,
+		fontWeight: fonts.fontWeight.bold,
 	},
 	activeDot: {
 		width: 25,
 		height: 10,
-		backgroundColor: "#F95A7E",
+		backgroundColor: colors.pink,
 		borderRadius: 8,
 	},
 	dot: {
 		width: 10,
 		height: 10,
-		backgroundColor: "#DEDEDE",
+		backgroundColor: colors.border,
 		borderRadius: 10,
 	},
 	dotsNav: {
@@ -243,15 +246,15 @@ export const stylesFour = StyleSheet.create({
         marginRight: 36,
     },
     mainTitle: {
-        color: "#515151",
-        fontSize: 18,
-        fontWeight: "bold",
+        color: colors.darkGrey,
+        fontSize: fonts.mediumText,
+        fontWeight: fonts.fontWeight.bold,
         lineHeight: 24,
         marginBottom: 5,
     },
     para: {
-        color: "#515151",
-        fontSize: 14,
+        color: colors.darkGrey,
+        fontSize: fonts.smallText,
         marginBottom: 96,
     },
     navigatorContainer: {
@@ -262,25 +265,25 @@ export const stylesFour = StyleSheet.create({
         alignItems: "center",
 	},
 	skipBtn: {
-		color: "#F95A7E",
-		fontSize: 18,
-		fontWeight: "bold",
+		color: colors.pink,
+		fontSize: fonts.mediumText,
+		fontWeight: fonts.fontWeight.bold,
 	},
 	nextBtn: {
-		color: "#F95A7E",
-		fontSize: 18,
-		fontWeight: "bold",
+		color: colors.pink,
+		fontSize: fonts.mediumText,
+		fontWeight: fonts.fontWeight.bold,
 	},
 	activeDot: {
 		width: 25,
 		height: 10,
-		backgroundColor: "#F95A7E",
+		backgroundColor: colors.pink,
 		borderRadius: 8,
 	},
 	dot: {
 		width: 10,
 		height: 10,
-		backgroundColor: "#DEDEDE",
+		backgroundColor: colors.border,
 		borderRadius: 10,
 	},
 	dotsNav: {

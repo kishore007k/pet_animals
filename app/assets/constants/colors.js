@@ -1,0 +1,25 @@
+export default Colors = {
+    white: "#FFFFFF",
+    black: "#000000",
+
+    primary: "#162593",
+    pink: "#F95A7E",
+    lightGrey: "#DEDEDE",
+    lightGreyPattern: "#E4E4E4",
+    darkGrey: "#515151",
+    whiteText: "#F9F9F9",
+    border: "#DEDEDE",
+    lightBlack: "#0A0A0A",
+    red: "#F33737",
+    lightBlueDot: "#94D1D8",
+    yellowBtn: "#FFC400",
+    blueRadioBtn: "#AAF0E4",
+    greenBtn: "#35BD26",
+    greyText: "#9F9F9F",
+    grey: "#F5F5F5",
+
+    blueGradient: ["#31176D", "#30C0C9"],
+    pinkGradient: ["#FF7E9B", "#FF2052"],
+    lightBlueGradient: ["#D9F2FF", "#6BC9FF"],
+    greenGradient:["#17FF55", "#0C802B"],
+};
