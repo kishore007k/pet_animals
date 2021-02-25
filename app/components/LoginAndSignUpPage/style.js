@@ -7,7 +7,6 @@ export default styles = StyleSheet.create({
         flex: 1,
         height: "100%",
 		flexDirection: 'row',
-		backgroundColor: colors.white,
 		alignItems: 'center',
 		justifyContent: 'center',
         backgroundColor: colors.primary,
@@ -49,6 +48,7 @@ export default styles = StyleSheet.create({
         width: "100%",
         height: 50,
         marginLeft: "10%",
+        paddingStart: 10,
     },
     inputText: {
         position: "absolute",

@@ -4,12 +4,14 @@ import { StyleSheet, View } from 'react-native';
 import LandingPage from './app/screens/LandingScreen';
 import colors from './app/assets/constants/colors';
 import LoginAndSignUpScreen from './app/screens/LoginAndSignUpScreen';
+import MobileOTP from './app/components/MobileOTP';
 
 export default function App() {
 	return (
 		<View style={styles.container}>
 			{/* <LandingPage /> */}
-			<LoginAndSignUpScreen />
+			{/* <LoginAndSignUpScreen /> */}
+			<MobileOTP />
 			<StatusBar style="auto" />
 		</View>
 	);
