@@ -122,7 +122,8 @@ export default styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        height: "15%",
+        paddingTop: 20,
+        // height: "15%",
     },
     btmText: {
         marginRight: 20,

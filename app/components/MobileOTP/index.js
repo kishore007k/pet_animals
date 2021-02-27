@@ -55,47 +55,34 @@ export const MobileOTP = () => {
 
 
 export const MobileOTPVerification = () => {
-    const [otpArray, setOtpArray] = useState([]);
+    const [num, setNum] = useState("");
 
-      // TextInput refs to focus programmatically while entering OTP
-    const firstTextInputRef = useRef(null);
-    const secondTextInputRef = useRef(null);
-    const thirdTextInputRef = useRef(null);
-    const fourthTextInputRef = useRef(null);
-
-    const handleOtpChange = (index) => {
-        return value => {
-            if (isNaN(Number(value))) {
-            // do nothing when a non digit is pressed
-            return;
-            }
-            const otpArrayCopy = otpArray.concat();
-            otpArrayCopy[index] = value;
-            setOtpArray(otpArrayCopy);
-    
-            // auto focus to next InputText if value is not blank
-            if (value !== '') {
-                if (index === 0) {
-                    secondTextInputRef.current.focus();
-                } else if (index === 1) {
-                    thirdTextInputRef.current.focus();
-                } else if (index === 2) {
-                    fourthTextInputRef.current.focus();
-                }
-            }
-        };
-    };
+    const handleNumberVerification = () => {
+        // This will verify the number using the OTP
+    }
 
     return (
         <View style={styles.container}>
             <View style={styles.pageContainer}>
                 <View style={styles.mainContent}>
                     <Text style={styles.mainTitle}>Verifying your number</Text>
-                    <Text style={styles.para}>We have sent the OTP to +91 9988776655</Text>
+                    <View style={styles.paraContainer}>
+                        <Text style={styles.para}>We have sent the OTP to </Text>
+                        <Text style={styles.para}>+91 9988776655</Text>
+                    </View>
                 </View>
                 <View style={styles.otpArea}>
-                    <TextInput />
+                    <TextInput keyboardType={"number-pad"} maxLength={1} autoFocus style={styles.inputNum} value={num} onChange={(text) => setNum(text)} />
+                    <TextInput keyboardType={"number-pad"} maxLength={1} style={styles.inputNum} value={num} onChange={(text) => setNum(text)} />
+                    <TextInput keyboardType={"number-pad"} maxLength={1} style={styles.inputNum} value={num} onChange={(text) => setNum(text)} />
+                    <TextInput keyboardType={"number-pad"} maxLength={1} style={styles.inputNum} value={num} onChange={(text) => setNum(text)} />
                 </View>
+                <View style={styles.verifyBtnContainer}>
+                    <Text onPress={handleNumberVerification} style={styles.verifyBtn}>
+                        Verify
+                    </Text>
+                </View>
+                <Text style={styles.resendOtp}>Resend OTP</Text>
             </View>
         </View>
     );

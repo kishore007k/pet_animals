@@ -113,7 +113,7 @@ export const stylesTwo = StyleSheet.create({
     para: {
         color: colors.darkGrey,
         fontSize: fonts.smallText,
-        marginBottom: 96,
+        marginBottom: 80,
     },
     navigatorContainer: {
         width: "100%",
@@ -121,6 +121,7 @@ export const stylesTwo = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
+		// marginBottom: 10,
 	},
 	skipBtn: {
 		color: colors.pink,
@@ -184,7 +185,7 @@ export const stylesThree = StyleSheet.create({
     para: {
         color: colors.darkGrey,
         fontSize: fonts.smallText,
-        marginBottom: 96,
+        marginBottom: 80,
     },
     navigatorContainer: {
         width: "100%",
@@ -255,7 +256,7 @@ export const stylesFour = StyleSheet.create({
     para: {
         color: colors.darkGrey,
         fontSize: fonts.smallText,
-        marginBottom: 96,
+        marginBottom: 80,
     },
     navigatorContainer: {
         width: "100%",

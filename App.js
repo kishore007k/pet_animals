@@ -5,13 +5,15 @@ import LandingPage from './app/screens/LandingScreen';
 import colors from './app/assets/constants/colors';
 import LoginAndSignUpScreen from './app/screens/LoginAndSignUpScreen';
 import MobileVerification from './app/screens/MobileVerification';
+import UserLocationScreen from './app/screens/UserLocationScreen';
 
 export default function App() {
 	return (
 		<View style={styles.container}>
 			{/* <LandingPage /> */}
 			{/* <LoginAndSignUpScreen /> */}
-			<MobileVerification />
+			{/* <MobileVerification /> */}
+			<UserLocationScreen />
 			<StatusBar style="auto" />
 		</View>
 	);

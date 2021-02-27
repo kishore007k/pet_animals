@@ -82,4 +82,59 @@ export default styles = StyleSheet.create({
         marginRight: "auto",
         borderRadius: 5,
     },
+    otpArea: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        marginBottom: 50,
+    },
+    inputNum: {
+        borderWidth: 1.5,
+        borderColor: colors.primary,
+        borderRadius: 5,
+        padding: 10,
+        fontSize: fonts.h2,
+        textAlign: "center",
+        maxWidth: 40,
+    },
+    verifyBtnContainer: {
+        width: "80%",
+        marginRight: "auto",
+        marginLeft: "auto",
+        marginBottom: 30,
+    },
+    verifyBtn: {
+        backgroundColor: colors.pink,
+        textAlign: "center",
+        fontSize: fonts.h2,
+        fontWeight: fonts.fontWeight.semiBold,
+        color: colors.whiteText,
+        paddingTop: 10,
+        paddingBottom: 10,
+        borderRadius: 5,
+    },
+    resendOtp: {
+        textAlign: "center",
+        color: colors.primary,
+        textDecorationLine: "underline",
+        textDecorationColor: colors.primary,
+        textDecorationStyle: "solid",
+    },
+    mainContent: {
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    mainTitle: {
+        fontWeight: fonts.fontWeight.semiBold,
+        fontSize: fonts.h2,
+        marginBottom: 10,
+        marginTop: 85,
+    },
+    paraContainer: {
+        marginBottom: 50,
+        alignItems: "center",
+    },
+    para: {
+        fontSize: fonts.mediumText,
+    }
 });
