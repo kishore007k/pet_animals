@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import React, { useRef, useState } from "react";
+import { SafeAreaView, StyleSheet } from "react-native";
 
 // These are all the components/screens that are used
 import LandingPage from "./app/screens/LandingScreen";
@@ -51,13 +50,12 @@ export default function App() {
 
 	if (fontsLoaded) {
 		return (
-			<View style={styles.container}>
-				<StatusBar style="auto" />
-				{/* <LandingPage /> */}
-				<LoginAndSignUpScreen />
+			<SafeAreaView style={styles.container}>
+				<LandingPage />
+				{/* <LoginAndSignUpScreen /> */}
 				{/* <MobileVerification /> */}
 				{/* <UserLocationScreen /> */}
-			</View>
+			</SafeAreaView>
 		);
 	} else {
 		return (
@@ -73,9 +71,8 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		flexDirection: "row",
-		backgroundColor: colors.white,
 		alignItems: "center",
 		justifyContent: "center",
+		backgroundColor: colors.white,
 	},
 });

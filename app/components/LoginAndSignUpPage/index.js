@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, Button, TextInput, Image } from "react-native";
-import colors from "../../assets/constants/colors";
-import styles from "./style";
+import React, { useState } from "react";
+import { View, Text, TextInput, Image } from "react-native";
+import CustomButton from "../CustomButton";
 
 import axios from "axios";
-import CustomButton from "../CustomButton";
+import styles from "./style";
 
 export const LoginPage = () => {
 	const [userName, setUserName] = useState("");
@@ -13,16 +12,12 @@ export const LoginPage = () => {
 	const [error, setError] = useState("");
 
 	const handleSignIn = () => {
-		// The handle sign In function will be implemented later once the backend is over
-		const url = "https://truly-contacts.herokuapp.com/api/auth/login"; // This is a sample
+		const url = "https://petanimalshyd.pythonanywhere.com/api/v1/login";
 		axios
-			.post(url, { username: userName, password: password })
-			.then((res) => setData(res))
+			.post(url, { user_name: userName, password: password })
+			.then((res) => setData(res.data))
 			.catch((err) => setError(err));
 	};
-
-	console.log(data);
-	console.log(error);
 
 	return (
 		<View style={styles.container}>
@@ -52,7 +47,7 @@ export const LoginPage = () => {
 							autoCompleteType="password"
 							style={styles.inputComp}
 							passwordRules
-							secureTextEntry
+							secureTextEntry={true}
 						/>
 						<View style={styles.userImageContainer}>
 							<Image
@@ -108,23 +103,18 @@ export const SignUpPage = () => {
 
 	const handleSignUp = () => {
 		// This will handle the signUp function
-		const url = "https://truly-contacts.herokuapp.com/api/auth/register";
+		const url = "https://petanimalshyd.pythonanywhere.com/api/v1/register";
 		axios
 			.post(url, {
 				username: userName,
 				password: password,
 				email: email,
-				first_name: "kishore",
-				last_name: "Kumar",
 			})
 			.then((res) => setData(res))
 			.catch((err) => setError(err));
 
 		cleanUp();
 	};
-
-	console.log(data);
-	console.log(error);
 
 	return (
 		<View style={styles.container}>
