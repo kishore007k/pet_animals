@@ -3,7 +3,6 @@ import {
 	StyleSheet,
 	View,
 	Text,
-	FlatList,
 	Dimensions,
 	Image,
 	ImageBackground,
@@ -52,6 +51,14 @@ const LandingPage = () => {
 	const SCREEN_WIDTH = width;
 	const SCREEN_HEIGHT = height;
 
+	const handleSkipEvent = () => {
+		// This will be implemented later
+	};
+
+	const handleNextEvent = () => {
+		// This will be implemented later
+	};
+
 	return (
 		<View style={styles.container}>
 			<View style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT }}>
@@ -93,28 +100,36 @@ const LandingPage = () => {
 					}}
 				/>
 			</View>
-			<View style={styles.pagination}>
-				<Animated.View
-					style={{
-						width: 22,
-						height: 8,
-						backgroundColor: colors.pink,
-						borderRadius: 8,
-						marginHorizontal: 8,
-						left: 28,
-						transform: [
-							{
-								translateX: Animated.divide(scrollX, SCREEN_WIDTH).interpolate({
-									inputRange: [0, 4],
-									outputRange: [0, SCREEN_WIDTH / 4],
-								}),
-							},
-						],
-					}}
-				/>
-				{landingPagesArray.map((item) => {
-					return <View style={styles.dots} key={item.key} />;
-				})}
+
+			<View style={styles.bottomContent}>
+				<Text style={styles.btnText}>Skip</Text>
+
+				<View style={styles.pagination}>
+					<Animated.View
+						style={{
+							width: 20,
+							height: 10,
+							backgroundColor: colors.pink,
+							borderRadius: 10,
+							marginHorizontal: 10,
+							left: 15,
+							zIndex: 1,
+							transform: [
+								{
+									translateX: Animated.divide(scrollX, SCREEN_WIDTH).interpolate({
+										inputRange: [0, 4],
+										outputRange: [0, SCREEN_WIDTH / 4],
+									}),
+								},
+							],
+						}}
+					/>
+					{landingPagesArray.map((item) => {
+						return <View style={styles.dots} key={item.key} />;
+					})}
+				</View>
+
+				<Text style={styles.btnText}>Next</Text>
 			</View>
 		</View>
 	);
@@ -198,25 +213,36 @@ const styles = StyleSheet.create({
 		fontSize: fonts.smallText,
 		marginBottom: 80,
 	},
-	pagination: {
+	bottomContent: {
 		position: "absolute",
-		bottom: 50,
 		flexDirection: "row",
-		justifyContent: "center",
+		bottom: 50,
+		width: "100%",
+		justifyContent: "space-between",
 		alignItems: "center",
+		paddingLeft: 20,
+		paddingRight: 20,
+	},
+	pagination: {
+		flexDirection: "row",
 	},
 	dots: {
-		width: 8,
-		height: 8,
-		backgroundColor: colors.pink,
-		borderRadius: 8,
+		width: 10,
+		height: 10,
+		backgroundColor: colors.lightGrey,
+		borderRadius: 10,
 		marginHorizontal: 8,
+		right: 20,
 	},
-	activeDot: {
-		width: 20,
-		height: 8,
-		backgroundColor: colors.pink,
-		borderRadius: 8,
-		marginHorizontal: 8,
+	buttonContainer: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		width: "100%",
+	},
+	btnText: {
+		fontFamily: fonts.fontFamily.openSansSemiBold,
+		fontWeight: fonts.fontWeight.bold,
+		color: colors.pink,
+		fontSize: fonts.mediumText,
 	},
 });
