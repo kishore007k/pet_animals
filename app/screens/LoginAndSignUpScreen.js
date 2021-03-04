@@ -5,8 +5,8 @@ import { LoginPage, SignUpPage } from "../components/LoginAndSignUpPage";
 const LoginAndSignUpScreen = () => {
 	return (
 		<View>
-			<LoginPage />
-			{/* <SignUpPage /> */}
+			{/* <LoginPage /> */}
+			<SignUpPage />
 		</View>
 	);
 };

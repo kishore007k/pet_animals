@@ -8,6 +8,7 @@ import {
 	ImageBackground,
 	Animated,
 } from "react-native";
+import { color } from "react-native-reanimated";
 import colors from "../assets/constants/colors";
 import fonts from "../assets/constants/fonts";
 
@@ -59,6 +60,52 @@ const LandingPage = () => {
 		// This will be implemented later
 	};
 
+	const Indicator = ({ scrollX }) => {
+		return (
+			<View style={{ flexDirection: "row" }}>
+				{landingPagesArray.map((_, i) => {
+					const inputRange = [
+						(i - 2) * width,
+						(i - 1) * width,
+						i * width,
+						(i + 1) * width,
+						(i + 2) * width,
+					];
+
+					const dotWidth = scrollX.interpolate({
+						inputRange,
+						outputRange: [10, 10, 20, 10, 10],
+						extrapolate: "clamp",
+					});
+
+					const backgroundColor = scrollX.interpolate({
+						inputRange,
+						outputRange: [
+							colors.lightGreyPattern,
+							colors.lightGreyPattern,
+							colors.pink,
+							colors.lightGreyPattern,
+							colors.lightGreyPattern,
+						],
+					});
+					return (
+						<Animated.View
+							key={`indicator-${i}`}
+							style={{
+								height: 10,
+								width: 10,
+								width: dotWidth,
+								borderRadius: 5,
+								backgroundColor,
+								margin: 10,
+							}}
+						/>
+					);
+				})}
+			</View>
+		);
+	};
+
 	return (
 		<View style={styles.container}>
 			<View style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT }}>
@@ -103,32 +150,7 @@ const LandingPage = () => {
 
 			<View style={styles.bottomContent}>
 				<Text style={styles.btnText}>Skip</Text>
-
-				<View style={styles.pagination}>
-					<Animated.View
-						style={{
-							width: 20,
-							height: 10,
-							backgroundColor: colors.pink,
-							borderRadius: 10,
-							marginHorizontal: 10,
-							left: 15,
-							zIndex: 1,
-							transform: [
-								{
-									translateX: Animated.divide(scrollX, SCREEN_WIDTH).interpolate({
-										inputRange: [0, 4],
-										outputRange: [0, SCREEN_WIDTH / 4],
-									}),
-								},
-							],
-						}}
-					/>
-					{landingPagesArray.map((item) => {
-						return <View style={styles.dots} key={item.key} />;
-					})}
-				</View>
-
+				<Indicator scrollX={scrollX} />
 				<Text style={styles.btnText}>Next</Text>
 			</View>
 		</View>
