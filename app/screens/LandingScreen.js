@@ -8,11 +8,10 @@ import {
 	ImageBackground,
 	Animated,
 } from "react-native";
-import { color } from "react-native-reanimated";
 import colors from "../assets/constants/colors";
 import fonts from "../assets/constants/fonts";
 
-const LandingPage = () => {
+const LandingScreen = () => {
 	const landingPagesArray = [
 		{
 			backgroundImg: require("../assets/images/landingPage.png"),
@@ -157,7 +156,7 @@ const LandingPage = () => {
 	);
 };
 
-export default LandingPage;
+export default LandingScreen;
 
 const styles = StyleSheet.create({
 	container: {

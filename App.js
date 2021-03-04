@@ -2,10 +2,7 @@ import React, { useRef, useState } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 
 // These are all the components/screens that are used
-import LandingPage from "./app/screens/LandingScreen";
 import LoginAndSignUpScreen from "./app/screens/LoginAndSignUpScreen";
-import MobileVerification from "./app/screens/MobileVerification";
-import UserLocationScreen from "./app/screens/UserLocationScreen";
 
 // These are all the fonts and colors
 import colors from "./app/assets/constants/colors";
@@ -51,10 +48,7 @@ export default function App() {
 	if (fontsLoaded) {
 		return (
 			<SafeAreaView style={styles.container}>
-				<LandingPage />
-				{/* <LoginAndSignUpScreen /> */}
-				{/* <MobileVerification /> */}
-				{/* <UserLocationScreen /> */}
+				<LoginAndSignUpScreen />
 			</SafeAreaView>
 		);
 	} else {
