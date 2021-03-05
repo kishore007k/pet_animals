@@ -10,6 +10,8 @@ export const LoginPage = ({
 	password,
 	setPassword,
 	handleSignIn,
+	signInWithGoogle,
+	signInWithFacebook,
 }) => {
 	return (
 		<View style={styles.container}>
@@ -62,14 +64,18 @@ export const LoginPage = ({
 							source={require("../../assets/images/google.png")}
 							style={styles.socialImg}
 						/>
-						<Text style={styles.socialBtn}>Google</Text>
+						<Text style={styles.socialBtn} onPress={signInWithGoogle}>
+							Google
+						</Text>
 					</View>
 					<View style={styles.socialContainer}>
 						<Image
 							source={require("../../assets/images/facebook.png")}
 							style={styles.socialImg}
 						/>
-						<Text style={styles.socialBtn}>Facebook</Text>
+						<Text style={styles.socialBtn} onPress={signInWithFacebook}>
+							Facebook
+						</Text>
 					</View>
 				</View>
 				<View style={styles.bottomTexts}>
@@ -89,6 +95,8 @@ export const SignUpPage = ({
 	email,
 	setEmail,
 	handleSignUp,
+	signInWithGoogle,
+	signInWithFacebook,
 }) => {
 	return (
 		<View style={styles.container}>
@@ -138,14 +146,18 @@ export const SignUpPage = ({
 							source={require("../../assets/images/google.png")}
 							style={styles.socialImg}
 						/>
-						<Text style={styles.socialBtn}>Google</Text>
+						<Text style={styles.socialBtn} onPress={signInWithGoogle}>
+							Google
+						</Text>
 					</View>
 					<View style={styles.socialContainer}>
 						<Image
 							source={require("../../assets/images/facebook.png")}
 							style={styles.socialImg}
 						/>
-						<Text style={styles.socialBtn}>Facebook</Text>
+						<Text style={styles.socialBtn} onPress={signInWithFacebook}>
+							Facebook
+						</Text>
 					</View>
 				</View>
 				<View style={styles.bottomTexts}>
