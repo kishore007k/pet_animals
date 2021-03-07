@@ -2,9 +2,11 @@
 
 ## Primary Todo List:-
 
+
 - [x] Download all custom fonts and centralize them.
 - [ ] Add all the assets like `images`, `fonts`, `icons` inside the _app/assets_ folder
 - [x] Centralize all colors and themes
+
 
 ## Contribution Guide:-
 
