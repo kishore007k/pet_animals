@@ -3,10 +3,7 @@ import { SafeAreaView, StyleSheet } from "react-native";
 import {NavigationContainer} from "@react-navigation/native"
 
 // These are all the components/screens that are used
-import LandingPage from "./app/screens/LandingScreen";
 import LoginAndSignUpScreen from "./app/screens/LoginAndSignUpScreen";
-import MobileVerification from "./app/screens/MobileVerification";
-import UserLocationScreen from "./app/screens/UserLocationScreen";
 
 // These are all the fonts and colors
 import colors from "./app/assets/constants/colors";

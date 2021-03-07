@@ -1,24 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, TextInput, Image } from "react-native";
 import CustomButton from "../CustomButton";
 
-import axios from "axios";
 import styles from "./style";
 
-export const LoginPage = () => {
-	const [userName, setUserName] = useState("");
-	const [password, setPassword] = useState("");
-	const [data, setData] = useState("");
-	const [error, setError] = useState("");
-
-	const handleSignIn = () => {
-		const url = "https://petanimalshyd.pythonanywhere.com/api/v1/login";
-		axios
-			.post(url, { user_name: userName, password: password })
-			.then((res) => setData(res.data))
-			.catch((err) => setError(err));
-	};
-
+export const LoginPage = ({
+	userName,
+	setUserName,
+	password,
+	setPassword,
+	handleSignIn,
+	signInWithGoogle,
+	signInWithFacebook,
+}) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.pageContainer}>
@@ -30,6 +24,7 @@ export const LoginPage = () => {
 							onChangeText={(text) => setUserName(text)}
 							value={userName}
 							autoCompleteType="name"
+							autoFocus
 							style={styles.inputComp}
 						/>
 						<View style={styles.userImageContainer}>
@@ -47,6 +42,7 @@ export const LoginPage = () => {
 							autoCompleteType="password"
 							style={styles.inputComp}
 							passwordRules
+							autoFocus
 							secureTextEntry={true}
 						/>
 						<View style={styles.userImageContainer}>
@@ -68,14 +64,18 @@ export const LoginPage = () => {
 							source={require("../../assets/images/google.png")}
 							style={styles.socialImg}
 						/>
-						<Text style={styles.socialBtn}>Google</Text>
+						<Text style={styles.socialBtn} onPress={signInWithGoogle}>
+							Google
+						</Text>
 					</View>
 					<View style={styles.socialContainer}>
 						<Image
 							source={require("../../assets/images/facebook.png")}
 							style={styles.socialImg}
 						/>
-						<Text style={styles.socialBtn}>Facebook</Text>
+						<Text style={styles.socialBtn} onPress={signInWithFacebook}>
+							Facebook
+						</Text>
 					</View>
 				</View>
 				<View style={styles.bottomTexts}>
@@ -87,35 +87,17 @@ export const LoginPage = () => {
 	);
 };
 
-export const SignUpPage = () => {
-	const [userName, setUserName] = useState("");
-	const [password, setPassword] = useState("");
-	const [email, setEmail] = useState("");
-	const [data, setData] = useState("");
-	const [error, setError] = useState("");
-
-	const cleanUp = () => {
-		setUserName("");
-		setPassword("");
-		setEmail("");
-		setError("");
-	};
-
-	const handleSignUp = () => {
-		// This will handle the signUp function
-		const url = "https://petanimalshyd.pythonanywhere.com/api/v1/register";
-		axios
-			.post(url, {
-				username: userName,
-				password: password,
-				email: email,
-			})
-			.then((res) => setData(res))
-			.catch((err) => setError(err));
-
-		cleanUp();
-	};
-
+export const SignUpPage = ({
+	userName,
+	setUsername,
+	password,
+	setPassword,
+	email,
+	setEmail,
+	handleSignUp,
+	signInWithGoogle,
+	signInWithFacebook,
+}) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.pageContainer}>
@@ -164,14 +146,18 @@ export const SignUpPage = () => {
 							source={require("../../assets/images/google.png")}
 							style={styles.socialImg}
 						/>
-						<Text style={styles.socialBtn}>Google</Text>
+						<Text style={styles.socialBtn} onPress={signInWithGoogle}>
+							Google
+						</Text>
 					</View>
 					<View style={styles.socialContainer}>
 						<Image
 							source={require("../../assets/images/facebook.png")}
 							style={styles.socialImg}
 						/>
-						<Text style={styles.socialBtn}>Facebook</Text>
+						<Text style={styles.socialBtn} onPress={signInWithFacebook}>
+							Facebook
+						</Text>
 					</View>
 				</View>
 				<View style={styles.bottomTexts}>

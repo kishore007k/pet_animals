@@ -130,7 +130,10 @@ export default styles = StyleSheet.create({
 		marginRight: 20,
 	},
 	btmBtn: {
+		fontFamily: fonts.fontFamily.openSansSemiBold,
+		fontSize: fonts.mediumText,
 		color: colors.pink,
-		fontWeight: fonts.fontWeight.bold,
+		fontWeight: fonts.fontWeight.semiBold,
+		textDecorationLine: "underline",
 	},
 });
