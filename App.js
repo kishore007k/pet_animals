@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
+import {NavigationContainer} from "@react-navigation/native"
 
 // These are all the components/screens that are used
 import LandingPage from "./app/screens/LandingScreen";
@@ -11,6 +12,7 @@ import UserLocationScreen from "./app/screens/UserLocationScreen";
 import colors from "./app/assets/constants/colors";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+import BottomTab from "./app/components/BottomTab";
 
 const getFonts = () =>
 	Font.loadAsync({
@@ -50,12 +52,15 @@ export default function App() {
 
 	if (fontsLoaded) {
 		return (
-			<SafeAreaView style={styles.container}>
-				<LandingPage />
-				{/* <LoginAndSignUpScreen /> */}
-				{/* <MobileVerification /> */}
-				{/* <UserLocationScreen /> */}
-			</SafeAreaView>
+			<NavigationContainer>
+				<BottomTab />
+			</NavigationContainer>
+			// <SafeAreaView style={styles.container}>
+			// 	<LandingPage />
+			// 	<LoginAndSignUpScreen />
+			// 	<MobileVerification />
+			// 	<UserLocationScreen />
+			// </SafeAreaView>
 		);
 	} else {
 		return (
