@@ -1,15 +1,11 @@
-import React, { useRef, useState } from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
-import {NavigationContainer} from "@react-navigation/native"
-
-// These are all the components/screens that are used
-import LoginAndSignUpScreen from "./app/screens/LoginAndSignUpScreen";
+import React, { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
 
 // These are all the fonts and colors
-import colors from "./app/assets/constants/colors";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-import BottomTab from "./app/components/BottomTab";
+// import BottomTab from "./app/components/BottomTab";
+import CustomBottomTab from "./app/pages/CustomBottomTab";
 
 const getFonts = () =>
 	Font.loadAsync({
@@ -50,14 +46,9 @@ export default function App() {
 	if (fontsLoaded) {
 		return (
 			<NavigationContainer>
-				<BottomTab />
+				{/* <BottomTab /> */}
+				<CustomBottomTab />
 			</NavigationContainer>
-			// <SafeAreaView style={styles.container}>
-			// 	<LandingPage />
-			// 	<LoginAndSignUpScreen />
-			// 	<MobileVerification />
-			// 	<UserLocationScreen />
-			// </SafeAreaView>
 		);
 	} else {
 		return (
@@ -69,12 +60,3 @@ export default function App() {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		alignItems: "center",
-		justifyContent: "center",
-		backgroundColor: colors.white,
-	},
-});

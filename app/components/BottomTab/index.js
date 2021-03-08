@@ -1,63 +1,152 @@
 import React from "react";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs"
-import {Image} from "react-native"
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { Image, View, StyleSheet } from "react-native";
 
 // These are the screens to be implement
+import Home from "../../screens/HomeScreen";
+import Live from "../../screens/ConsultScreen";
+import MyCart from "../../screens/MyCartScreen";
+import NewsFeed from "../../screens/KennelsScreen";
+import Profile from "../../screens/ProfileScreen";
+import colors from "../../assets/constants/colors";
 
-
-// import HomePage from "../../screens/HomePage";
-// import Live from "../../screens/Live"
-// import MyCart from "../../screens/MyCart"
-// import NewsFeed from "../../screens/NewsFeed";
-// import Profile from "../../screens/Profile";
-
-
-
-const Tab = createMaterialBottomTabNavigator()
+const Tab = createMaterialBottomTabNavigator();
 
 const BottomTab = () => {
-  return (
-      
-      <Tab.Navigator  
-          initialRouteName="NewsFeed"
-          activeTintColor= '#f95a7e'
-          barStyle = {{backgroundColor: "#fff", paddingBottom: 5}}
+	return (
+		<Tab.Navigator
+			initialRouteName="Home"
+			labeled={false}
+			activeColor={colors.pink}
+			barStyle={{
+				height: 100,
+				justifyContent: "space-evenly",
+				backgroundColor: colors.white,
+			}}
+		>
+			<Tab.Screen
+				name="Kennels"
+				component={NewsFeed}
+				options={{
+					tabBarIcon: ({ focused }) =>
+						focused ? (
+							<View style={styles.imageContainer}>
+								<Image
+									source={require("../../assets/Icons/kennelsActive.png")}
+									style={styles.imageActive}
+								/>
+							</View>
+						) : (
+							<Image
+								source={require("../../assets/Icons/kennelsInActive.png")}
+								style={styles.image}
+							/>
+						),
+				}}
+			/>
+			<Tab.Screen
+				name="Consult"
+				component={Live}
+				options={{
+					tabBarIcon: ({ focused }) =>
+						focused ? (
+							<View style={styles.imageContainer}>
+								<Image
+									source={require("../../assets/Icons/consultActive.png")}
+									style={styles.imageActive}
+								/>
+							</View>
+						) : (
+							<Image
+								source={require("../../assets/Icons/consultInActive.png")}
+								style={styles.image}
+							/>
+						),
+				}}
+			/>
+			<Tab.Screen
+				name="Home"
+				component={Home}
+				options={{
+					tabBarIcon: ({ focused }) =>
+						focused ? (
+							<View style={styles.imageContainer}>
+								<Image
+									source={require("../../assets/Icons/homeActive.png")}
+									style={styles.imageActive}
+								/>
+							</View>
+						) : (
+							<Image
+								source={require("../../assets/Icons/homeInActive.png")}
+								style={styles.image}
+							/>
+						),
+				}}
+			/>
+			<Tab.Screen
+				name="MyCart"
+				component={MyCart}
+				options={{
+					tabBarIcon: ({ focused }) =>
+						focused ? (
+							<View style={styles.imageContainer}>
+								<Image
+									source={require("../../assets/Icons/cartActive.png")}
+									style={styles.imageActive}
+								/>
+							</View>
+						) : (
+							<Image
+								source={require("../../assets/Icons/cartInActive.png")}
+								style={styles.image}
+							/>
+						),
+				}}
+			/>
+			<Tab.Screen
+				name="Profile"
+				component={Profile}
+				options={{
+					tabBarIcon: ({ focused }) =>
+						focused ? (
+							<View style={styles.imageContainer}>
+								<Image
+									source={require("../../assets/Icons/profileActive.png")}
+									style={styles.imageActive}
+								/>
+							</View>
+						) : (
+							<Image
+								source={require("../../assets/Icons/profileInActive.png")}
+								style={styles.image}
+							/>
+						),
+				}}
+			/>
+		</Tab.Navigator>
+	);
+};
 
-          >
-        <Tab.Screen name="NewsFeed"
-                    component={NewsFeed} 
-                    options={{tabBarIcon: ({focused}) =>(
-                            <Image source= { focused? require("../../assets/Icons/feed.png")
-                                                      :require("../../assets/Icons/feed.png")} 
-                                 />
-                        ) }}/>
-        <Tab.Screen name="Live"  component={Live}  options={{tabBarIcon: ({focused}) =>(
-                            
-                            <Image source= { focused? require("../../assets/Icons/live.png")
-                                                      :require("../../assets/Icons/live.png")} 
-                                 />
-         ) }}/>
-        <Tab.Screen name="Home"  component={HomePage}  options={{tabBarIcon: ({focused}) =>{
-                            return (
-                                                  
-                            <Image source= { focused? require("../../assets/Icons/home.png")
-                                                      :require("../../assets/Icons/home.png")} 
-                                    />
-                        )} }}/>
-        <Tab.Screen name="MyCart"  component={MyCart}  options={{tabBarIcon: ({focused}) =>(
-                            <Image source= { focused? require("../../assets/Icons/cart.png")
-                                                      :require("../../assets/Icons/cart.png")} 
-                                />
-                        ) }}/>
-        <Tab.Screen name="Profile"  component={Profile} options={{tabBarIcon: ({focused}) =>(
-                            <Image source= { focused? require("../../assets/Icons/profile.png")
-                                                      :require("../../assets/Icons/profile.png")} 
-                                 />
-                        ) }} />
-      </Tab.Navigator>
-  );
-}
+export default BottomTab;
 
-
-
-export default BottomTab
+const styles = StyleSheet.create({
+	imageContainer: {
+		backgroundColor: colors.pink,
+		paddingHorizontal: 10,
+		paddingVertical: 10,
+		borderRadius: 100,
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	imageActive: {
+		maxWidth: 35,
+		maxHeight: 40,
+		resizeMode: "contain",
+	},
+	image: {
+		maxWidth: 25,
+		maxHeight: 30,
+		resizeMode: "contain",
+	},
+});
