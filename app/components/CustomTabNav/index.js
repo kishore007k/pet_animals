@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import colors from "../../assets/constants/colors";
 import Tab from "./Tab";
 
@@ -8,8 +8,11 @@ const { width } = Dimensions.get("screen");
 const CustomTabNav = ({ state, navigation }) => {
 	const [selected, setSelected] = useState("Home");
 	const { routes } = state;
-	const activeColor = (currentTab) =>
-		currentTab === selected ? colors.greyText : colors.pink;
+
+	const active = (currentTab) => (currentTab === selected ? true : false);
+
+	const activeOpacity = (currentTab) =>
+		currentTab === selected ? styles.activeDisplay : styles.inActiveDisplay;
 	const activeTab = (currentTab) =>
 		currentTab === selected ? styles.activeTab : styles.inActiveTab;
 
@@ -37,10 +40,11 @@ const CustomTabNav = ({ state, navigation }) => {
 				return (
 					<Tab
 						tab={route}
+						selected={active(route.name)}
+						opacity={activeOpacity(route.name)}
 						icon={selectedTab(route.name)}
 						onPress={() => handleTabNavigation(route.name, index)}
-						color={activeColor(route.name)}
-						activeStyle={activeTab(route.name)}
+						activeTabStyle={activeTab(route.name)}
 						key={route.key}
 					/>
 				);
@@ -56,15 +60,23 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "space-evenly",
 		width,
+		paddingVertical: 10,
+	},
+	activeDisplay: {
+		opacity: 0,
+	},
+	inActiveDisplay: {
+		opacity: 1,
+		color: colors.pink,
 	},
 	activeTab: {
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor: colors.pink,
+		flex: 1,
 	},
 	inActiveTab: {
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor: colors.grey,
+		flex: 1,
 	},
 });

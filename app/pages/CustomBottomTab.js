@@ -11,7 +11,10 @@ const Tab = createBottomTabNavigator();
 
 const CustomBottomTab = () => {
 	return (
-		<Tab.Navigator tabBar={(props) => <CustomTabNav {...props} />}>
+		<Tab.Navigator
+			initialRouteName="Home"
+			tabBar={(props) => <CustomTabNav {...props} />}
+		>
 			<Tab.Screen
 				name="Kennels"
 				component={Kennels}
