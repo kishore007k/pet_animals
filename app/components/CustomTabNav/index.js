@@ -61,13 +61,14 @@ const styles = StyleSheet.create({
 		justifyContent: "space-evenly",
 		width,
 		paddingVertical: 10,
+		elevation: 10,
 	},
 	activeDisplay: {
 		opacity: 0,
 	},
 	inActiveDisplay: {
 		opacity: 1,
-		color: colors.pink,
+		color: colors.greyText,
 	},
 	activeTab: {
 		justifyContent: "center",

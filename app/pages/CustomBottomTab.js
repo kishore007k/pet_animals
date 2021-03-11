@@ -1,10 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../screens/HomeScreen";
-import Kennels from "../screens/KennelsScreen";
-import Consult from "../screens/ConsultScreen";
-import MyCart from "../screens/MyCartScreen";
-import Profile from "../screens/ProfileScreen";
+import Home from "./HomeScreen";
+import Kennels from "./KennelsScreen";
+import Consult from "./ConsultScreen";
+import MyCart from "./MyCartScreen";
+import Profile from "./ProfileScreen";
 import CustomTabNav from "../components/CustomTabNav";
 
 const Tab = createBottomTabNavigator();

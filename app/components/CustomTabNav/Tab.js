@@ -26,8 +26,8 @@ export default Tab;
 
 const styles = StyleSheet.create({
 	image: {
-		width: 30,
-		height: 40,
+		width: 26,
+		height: 36,
 		resizeMode: "contain",
 	},
 });

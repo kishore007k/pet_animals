@@ -46,7 +46,6 @@ export default function App() {
 	if (fontsLoaded) {
 		return (
 			<NavigationContainer>
-				{/* <BottomTab /> */}
 				<CustomBottomTab />
 			</NavigationContainer>
 		);
