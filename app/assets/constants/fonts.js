@@ -1,4 +1,4 @@
-export default Fonts = {
+export default fonts = {
 	h1: 36,
 	h2: 24,
 	h3: 20,

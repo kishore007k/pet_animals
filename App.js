@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 // These are all the fonts and colors
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-// import BottomTab from "./app/components/BottomTab";
-import CustomBottomTab from "./app/pages/CustomBottomTab";
+import OnBoardingUi from "./app/screens/OnBoardingUi";
+import AuthenticationScreen from "./app/screens/AuthenticationScreen";
+import { View } from "react-native";
+
+const Stack = createStackNavigator();
 
 const getFonts = () =>
 	Font.loadAsync({
@@ -46,7 +50,10 @@ export default function App() {
 	if (fontsLoaded) {
 		return (
 			<NavigationContainer>
-				<CustomBottomTab />
+				<Stack.Navigator headerMode="none">
+					<Stack.Screen name="LandingScreen" component={OnBoardingUi} />
+					<Stack.Screen name="LoginPage" component={AuthenticationScreen} />
+				</Stack.Navigator>
 			</NavigationContainer>
 		);
 	} else {

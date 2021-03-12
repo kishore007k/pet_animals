@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import { LoginPage, SignUpPage } from "../components/LoginAndSignUpPage";
-import LandingScreen from "../screens/LandingScreen";
-import MobileVerification from "../screens/MobileVerification";
-import UserLocationScreen from "../screens/UserLocationScreen";
-import LoadingScreen from "../screens/LoadingScreen";
 import axios from "axios";
 import * as Google from "expo-google-app-auth";
 import * as Facebook from "expo-facebook";
 
 const appId = "1836177906531228";
 
-const LoginAndSignUpScreen = () => {
+const AuthenticationScreen = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [hasAnAccount, setHasAnAccount] = useState(false);
+	const [hasAnAccount, setHasAnAccount] = useState(true);
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
 	const [email, setEmail] = useState("");
@@ -104,43 +100,18 @@ const LoginAndSignUpScreen = () => {
 	};
 
 	return (
-		<View>
-			{!isLoggedIn ? (
-				<View>
-					{/* <LandingScreen /> */}
-					{!hasAnAccount ? (
-						<LoginPage
-							userName={userName}
-							setUserName={setUserName}
-							password={password}
-							setPassword={setPassword}
-							handleSignIn={handleSignIn}
-							signInWithGoogle={signInWithGoogle}
-							signInWithFacebook={signInWithFacebook}
-						/>
-					) : (
-						<SignUpPage
-							userName={userName}
-							setUserName={setUserName}
-							password={password}
-							setPassword={setPassword}
-							email={email}
-							setEmail={setEmail}
-							handleSignUp={handleSignUp}
-							signInWithGoogle={signInWithGoogle}
-							signInWithFacebook={signInWithFacebook}
-						/>
-					)}
-				</View>
-			) : (
-				<View style={{ width: "100%", height: "100%" }}>
-					<MobileVerification />
-					<UserLocationScreen />
-					<LoadingScreen />
-				</View>
-			)}
+		<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+			<LoginPage
+				userName={userName}
+				setUserName={setUserName}
+				password={password}
+				setPassword={setPassword}
+				handleSignIn={handleSignIn}
+				signInWithGoogle={signInWithGoogle}
+				signInWithFacebook={signInWithFacebook}
+			/>
 		</View>
 	);
 };
 
-export default LoginAndSignUpScreen;
+export default AuthenticationScreen;

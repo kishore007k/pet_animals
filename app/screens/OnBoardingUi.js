@@ -8,10 +8,11 @@ import {
 	ImageBackground,
 	Animated,
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import colors from "../assets/constants/colors";
 import fonts from "../assets/constants/fonts";
 
-const LandingScreen = () => {
+const OnBoardingUi = ({ navigation }) => {
 	const landingPagesArray = [
 		{
 			backgroundImg: require("../assets/images/landingPage.png"),
@@ -148,15 +149,19 @@ const LandingScreen = () => {
 			</View>
 
 			<View style={styles.bottomContent}>
-				<Text style={styles.btnText}>Skip</Text>
+				<TouchableOpacity onPress={() => navigation.navigate("LoginPage")}>
+					<Text style={styles.btnText}>Skip</Text>
+				</TouchableOpacity>
 				<Indicator scrollX={scrollX} />
-				<Text style={styles.btnText}>Next</Text>
+				<TouchableOpacity>
+					<Text style={styles.btnText}>Next</Text>
+				</TouchableOpacity>
 			</View>
 		</View>
 	);
 };
 
-export default LandingScreen;
+export default OnBoardingUi;
 
 const styles = StyleSheet.create({
 	container: {

@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import CustomButton from "../CustomButton";
 
 import styles from "./style";
@@ -12,6 +13,7 @@ export const LoginPage = ({
 	handleSignIn,
 	signInWithGoogle,
 	signInWithFacebook,
+	navigation,
 }) => {
 	return (
 		<View style={styles.container}>
@@ -24,7 +26,6 @@ export const LoginPage = ({
 							onChangeText={(text) => setUserName(text)}
 							value={userName}
 							autoCompleteType="name"
-							autoFocus
 							style={styles.inputComp}
 						/>
 						<View style={styles.userImageContainer}>
@@ -42,7 +43,6 @@ export const LoginPage = ({
 							autoCompleteType="password"
 							style={styles.inputComp}
 							passwordRules
-							autoFocus
 							secureTextEntry={true}
 						/>
 						<View style={styles.userImageContainer}>
@@ -80,7 +80,9 @@ export const LoginPage = ({
 				</View>
 				<View style={styles.bottomTexts}>
 					<Text style={styles.btmText}>Don't have an Account?</Text>
-					<Text style={styles.btmBtn}>Sign Up</Text>
+					<TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+						<Text style={styles.btmBtn}>Sign Up</Text>
+					</TouchableOpacity>
 				</View>
 			</View>
 		</View>
@@ -110,7 +112,6 @@ export const SignUpPage = ({
 							value={email}
 							autoCompleteType="email"
 							style={styles.inputComp}
-							autoFocus
 						/>
 					</View>
 					<View style={styles.inputContainer}>
@@ -120,7 +121,6 @@ export const SignUpPage = ({
 							value={userName}
 							autoCompleteType="name"
 							style={styles.inputComp}
-							autoFocus
 						/>
 					</View>
 					<View style={styles.inputContainer}>
@@ -130,7 +130,6 @@ export const SignUpPage = ({
 							value={password}
 							autoCompleteType="password"
 							style={styles.inputComp}
-							autoFocus
 							passwordRules
 							secureTextEntry
 						/>
@@ -162,7 +161,9 @@ export const SignUpPage = ({
 				</View>
 				<View style={styles.bottomTexts}>
 					<Text style={styles.btmText}>Already have an Account?</Text>
-					<Text style={styles.btmBtn}>Sign In</Text>
+					<TouchableOpacity onPress={() => navigation.navigate("Login")}>
+						<Text style={styles.btmBtn}>Sign In</Text>
+					</TouchableOpacity>
 				</View>
 			</View>
 		</View>
