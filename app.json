@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./app/assets/images/favicon.png"
-    }
+    },
+    "description": "This Project is creating an App compatible with both IOS & Android using the React-native framework under the topic Pet Animals Shop. This repo contains the Frontend of the app which is connected to the Backend using API key.",
+    "githubUrl": "https://github.com/kishore007k/pet_animals"
   }
 }

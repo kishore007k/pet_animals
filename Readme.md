@@ -2,9 +2,11 @@
 
 ## Primary Todo List:-
 
-- [ ] Download all custom fonts and centralize them.
+
+- [x] Download all custom fonts and centralize them.
 - [ ] Add all the assets like `images`, `fonts`, `icons` inside the _app/assets_ folder
-- [ ] Centralize all colors and themes
+- [x] Centralize all colors and themes
+
 
 ## Contribution Guide:-
 
@@ -15,6 +17,8 @@
 ## Rules:-
 
 Before making the commit to the repo it should be tested and verified by all three members.
+
+All the colors, gradients, fontSize & fontWeight that are used in this project are centralized and listed out in the `app/assets/constants` folder. Use these to apply colors and font styles to all the components and screens.
 
 ## Members:-
 
@@ -55,3 +59,17 @@ Follow the following steps carefully to contribute or make changes to the Projec
 1. click on that and you will be redirected to a new page with a window showing something like [this](https://storage.googleapis.com/cdn.thenewstack.io/media/2018/06/bd933597-propen.png) In that choose the base fork as kishore/pet_animals and base as development and in the head fork choose the branch you created and in the compare choose the branch you created.
 1. Inside the `Leave the comment` Explain the changes/features that you added.
 1. Then click on the `create pull request`
+
+### Using Custom Fonts:-
+
+To use the custom fonts import the fonts from `app/assets/constants/fonts.js` file and give
+
+```js
+fontFamily: fonts.fontFamily.openSansRegular,
+```
+
+This will give the fontFamily as OpenSans with regular Size to that element. Similarly to add colors give
+
+```js
+color: colors.primary,
+```
