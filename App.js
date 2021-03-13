@@ -7,7 +7,7 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import OnBoardingUi from "./app/screens/OnBoardingUi";
 import AuthenticationScreen from "./app/screens/AuthenticationScreen";
-import { View } from "react-native";
+import CustomBottomTab from "./app/pages/CustomBottomTab";
 
 const Stack = createStackNavigator();
 
@@ -53,6 +53,7 @@ export default function App() {
 				<Stack.Navigator headerMode="none">
 					<Stack.Screen name="LandingScreen" component={OnBoardingUi} />
 					<Stack.Screen name="LoginPage" component={AuthenticationScreen} />
+					<Stack.Screen name="CustomBottomTab" component={CustomBottomTab} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		);
