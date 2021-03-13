@@ -7,7 +7,7 @@ import * as Facebook from "expo-facebook";
 
 const appId = "1836177906531228";
 
-const AuthenticationScreen = () => {
+const AuthenticationScreen = ({ navigation }) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [hasAnAccount, setHasAnAccount] = useState(true);
 	const [userName, setUserName] = useState("");
@@ -41,6 +41,10 @@ const AuthenticationScreen = () => {
 				}
 			})
 			.catch((err) => setError(err));
+
+		if (isLoggedIn) {
+			navigation.navigate("CustomBottomTab");
+		}
 	};
 
 	const handleSignUp = () => {

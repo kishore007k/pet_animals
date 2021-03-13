@@ -138,8 +138,6 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.white,
 		paddingVertical: 10,
 		zIndex: 1,
-		shadowOpacity: 1,
-		shadowRadius: 10,
 	},
 	textInput: {
 		paddingStart: 40,
