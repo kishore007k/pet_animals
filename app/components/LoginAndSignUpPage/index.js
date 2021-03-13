@@ -99,6 +99,7 @@ export const SignUpPage = ({
 	handleSignUp,
 	signInWithGoogle,
 	signInWithFacebook,
+	navigation,
 }) => {
 	return (
 		<View style={styles.container}>
