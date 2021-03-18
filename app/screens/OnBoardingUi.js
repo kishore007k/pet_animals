@@ -12,6 +12,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import colors from "../assets/constants/colors";
 import fonts from "../assets/constants/fonts";
 
+const { width, height } = Dimensions.get("screen");
+
 const OnBoardingUi = ({ navigation }) => {
 	const landingPagesArray = [
 		{
@@ -47,18 +49,9 @@ const OnBoardingUi = ({ navigation }) => {
 	];
 
 	const scrollX = useRef(new Animated.Value(0)).current;
-	const { width, height } = Dimensions.get("screen");
 
 	const SCREEN_WIDTH = width;
 	const SCREEN_HEIGHT = height;
-
-	const handleSkipEvent = () => {
-		// This will be implemented later
-	};
-
-	const handleNextEvent = () => {
-		// This will be implemented later
-	};
 
 	const Indicator = ({ scrollX }) => {
 		return (
@@ -149,12 +142,11 @@ const OnBoardingUi = ({ navigation }) => {
 			</View>
 
 			<View style={styles.bottomContent}>
+				<View style={styles.pagination}>
+					<Indicator scrollX={scrollX} />
+				</View>
 				<TouchableOpacity onPress={() => navigation.navigate("LoginPage")}>
 					<Text style={styles.btnText}>Skip</Text>
-				</TouchableOpacity>
-				<Indicator scrollX={scrollX} />
-				<TouchableOpacity>
-					<Text style={styles.btnText}>Next</Text>
 				</TouchableOpacity>
 			</View>
 		</View>
@@ -251,19 +243,7 @@ const styles = StyleSheet.create({
 	},
 	pagination: {
 		flexDirection: "row",
-	},
-	dots: {
-		width: 10,
-		height: 10,
-		backgroundColor: colors.lightGrey,
-		borderRadius: 10,
-		marginHorizontal: 8,
-		right: 20,
-	},
-	buttonContainer: {
-		flexDirection: "row",
-		justifyContent: "space-between",
-		width: "100%",
+		marginLeft: width / 4,
 	},
 	btnText: {
 		fontFamily: fonts.fontFamily.openSansSemiBold,

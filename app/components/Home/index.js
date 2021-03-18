@@ -1,153 +1,216 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
 	View,
 	Text,
-	StyleSheet,
 	Image,
 	StatusBar,
 	TextInput,
-	ImageBackground,
 	Dimensions,
+	Animated,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import CustomSmallButton from "../CustomSmallButton";
+
 import colors from "../../assets/constants/colors";
 import fonts from "../../assets/constants/fonts";
-const { width, height } = Dimensions.get("screen");
 
-const HomePage = ({ navigation }) => (
-	<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-		<StatusBar
-			animated={true}
-			backgroundColor={colors.white}
-			barStyle={"dark-content"}
-			hidden={false}
-		/>
-		<View style={styles.container}>
-			<View style={styles.topImageBg}>
-				<ImageBackground
-					source={require("../../assets/Icons/petAnimal.png")}
-					style={{ width, height }}
-				/>
+import styles from "./style";
+
+const { width } = Dimensions.get("screen");
+
+const HomePage = ({ navigation }) => {
+	const DATA = [
+		{
+			image: require("../../assets/images/Image1.png"),
+			title: "Beagle1",
+			starsCount: 4,
+			key: "1",
+		},
+		{
+			image: require("../../assets/images/Image2.png"),
+			title: "Beagle2",
+			starsCount: 4,
+			key: "2",
+		},
+		{
+			image: require("../../assets/images/Image3.png"),
+			title: "Beagle3",
+			starsCount: 4,
+			key: "3",
+		},
+		{
+			image: require("../../assets/images/Image4.png"),
+			title: "Beagle4",
+			starsCount: 4,
+			key: "4",
+		},
+	];
+
+	const scrollX = useRef(new Animated.Value(0)).current;
+
+	const Indicator = ({ scrollX }) => {
+		return (
+			<View style={{ flexDirection: "row" }}>
+				{DATA.map((_, i) => {
+					const inputRange = [
+						(i - 2) * width,
+						(i - 1) * width,
+						i * width,
+						(i + 1) * width,
+						(i + 2) * width,
+					];
+
+					const dotWidth = scrollX.interpolate({
+						inputRange,
+						outputRange: [10, 10, 20, 10, 10],
+						extrapolate: "clamp",
+					});
+
+					const backgroundColor = scrollX.interpolate({
+						inputRange,
+						outputRange: [
+							colors.lightGreyPattern,
+							colors.lightGreyPattern,
+							colors.blueDot,
+							colors.lightGreyPattern,
+							colors.lightGreyPattern,
+						],
+					});
+					return (
+						<Animated.View
+							key={`indicator-${i}`}
+							style={{
+								height: 10,
+								width: 10,
+								width: dotWidth,
+								borderRadius: 5,
+								backgroundColor,
+								margin: 10,
+							}}
+						/>
+					);
+				})}
 			</View>
-			<View style={styles.mainWrapper}>
-				<View style={styles.subWrapper}>
-					<View style={styles.locationAndIcon}>
-						<View>
-							<Image
-								source={require("../../assets/Icons/location.png")}
-								style={styles.locationIcon}
-							/>
-						</View>
-						<View>
-							<Text style={styles.location}>Location</Text>
-							<View style={styles.locationAndArrow}>
-								<Text style={styles.locationDropBox}>Chennai</Text>
-								<Image
-									source={require("../../assets/Icons/arrowDown.png")}
-									style={styles.downArrow}
-								/>
+		);
+	};
+
+	return (
+		<View style={styles.mainContainer}>
+			<StatusBar
+				animated={true}
+				backgroundColor={colors.white}
+				barStyle={"dark-content"}
+				hidden={false}
+			/>
+			<View style={styles.topImageBg}>
+				<LinearGradient colors={colors.lightBlueGradient} style={styles.gradient}>
+					<Image
+						source={require("../../assets/images/homePet.png")}
+						style={styles.homePet}
+					/>
+
+					<View style={styles.mainWrapper}>
+						<View style={styles.subWrapper}>
+							<View style={styles.locationAndIcon}>
+								<View>
+									<Image
+										source={require("../../assets/Icons/location.png")}
+										style={styles.locationIcon}
+									/>
+								</View>
+								<View style={styles.locationContainer}>
+									<Text style={styles.location}>Location</Text>
+									<View style={styles.locationAndArrow}>
+										<Text style={styles.locationDropBox}>Chennai</Text>
+										<Image
+											source={require("../../assets/Icons/arrowDown.png")}
+											style={styles.downArrow}
+										/>
+									</View>
+								</View>
 							</View>
 						</View>
+
+						<View style={styles.chatAndNot}>
+							<Image
+								source={require("../../assets/Icons/chatIcon.png")}
+								style={styles.chatIcon}
+							/>
+							<Image source={require("../../assets/Icons/notificationIcon.png")} />
+						</View>
+					</View>
+				</LinearGradient>
+
+				<View style={styles.inputContainer}>
+					<View style={styles.input}>
+						<TextInput
+							style={styles.textInput}
+							placeholder="Search"
+							placeholderTextColor={colors.greyText}
+							onFocus={() => navigation.navigate("SearchPage")}
+						/>
+						<Image
+							source={require("../../assets/Icons/searchIcon.png")}
+							style={styles.searchIcon}
+						/>
 					</View>
 				</View>
-				<View style={styles.chatAndNot}>
-					<Image
-						source={require("../../assets/Icons/chatIcon.png")}
-						style={styles.chatIcon}
-					/>
-					<Image source={require("../../assets/Icons/notificationIcon.png")} />
+
+				<View>
+					<Text style={styles.cardTitle}>Best Selling</Text>
+					{/* Here it should be loaded dynamically */}
+					<View style={styles.cardContainer}>
+						<Animated.FlatList
+							horizontal
+							pagingEnabled
+							showsHorizontalScrollIndicator={false}
+							bounces={false}
+							onScroll={Animated.event(
+								[{ nativeEvent: { contentOffset: { x: scrollX } } }],
+								{ useNativeDriver: false }
+							)}
+							scrollEventThrottle={1}
+							data={DATA}
+							renderItem={({ item }) => {
+								return (
+									<View key={item.key}>
+										<Image source={item.image} style={styles.flatListImage} />
+										<View style={styles.cardContents}>
+											<View style={styles.cardContentsBgColor} />
+											<Text style={styles.cardContentsTitle}>{item.title}</Text>
+											<View style={styles.cardContentsStarsContainer}>
+												<Image
+													source={require("../../assets/Icons/activeStar.png")}
+													style={styles.cardContentsStars}
+												/>
+												<View style={styles.cardBottomContainer}>
+													<CustomSmallButton
+														buttonText="Buy Now"
+														backgroundColor={colors.white}
+														color={colors.black}
+														fontWeight={fonts.fontWeight.semiBold}
+														fontSize={fonts.smallText}
+													/>
+													<Indicator scrollX={scrollX} />
+
+													<Image
+														source={require("../../assets/Icons/heart.png")}
+														style={styles.cardBottomContainerHeart}
+													/>
+												</View>
+											</View>
+										</View>
+									</View>
+								);
+							}}
+						/>
+						{/* <View style={styles.pagination}>
+							<Indicator scrollX={scrollX} />
+						</View> */}
+					</View>
 				</View>
 			</View>
-			<View style={styles.input}>
-				<TextInput
-					style={styles.textInput}
-					placeholder="Search"
-					placeholderTextColor={colors.greyText}
-					onFocus={() => navigation.navigate("SearchPage")}
-				/>
-				<Image
-					source={require("../../assets/Icons/searchIcon.png")}
-					style={styles.searchIcon}
-				/>
-			</View>
 		</View>
-	</View>
-);
+	);
+};
 export default HomePage;
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
-		backgroundColor: colors.white,
-	},
-	topImageBg: {
-		flex: 1,
-		width,
-		height,
-	},
-	mainWrapper: {
-		width: "100%",
-		flexDirection: "row",
-		justifyContent: "space-between",
-		alignItems: "center",
-		position: "absolute",
-		top: 0,
-	},
-	subWrapper: {
-		flexDirection: "row",
-		alignItems: "center",
-	},
-	locationAndIcon: {
-		flexDirection: "row",
-		alignItems: "center",
-		marginTop: 20,
-	},
-	locationIcon: {
-		marginHorizontal: 10,
-	},
-	location: {
-		fontSize: fonts.smallText,
-		color: colors.greyText,
-	},
-	locationAndArrow: {
-		flexDirection: "row",
-		alignItems: "center",
-	},
-	locationDropBox: {
-		fontSize: fonts.mediumText,
-		fontWeight: fonts.fontWeight.bold,
-		marginRight: 10,
-	},
-	downArrow: {
-		top: 2,
-	},
-	chatAndNot: {
-		flexDirection: "row",
-		justifyContent: "center",
-		alignItems: "center",
-		top: 10,
-	},
-	chatIcon: {
-		left: 30,
-	},
-	input: {
-		position: "absolute",
-		top: "25%",
-		width: "90%",
-		backgroundColor: colors.white,
-		paddingVertical: 10,
-		zIndex: 1,
-	},
-	textInput: {
-		paddingStart: 40,
-		fontSize: fonts.h2,
-	},
-	searchIcon: {
-		position: "relative",
-		width: 20,
-		height: 20,
-		top: -25,
-		left: 10,
-	},
-});

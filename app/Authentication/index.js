@@ -8,7 +8,7 @@ import * as Facebook from "expo-facebook";
 const appId = "1836177906531228";
 
 const Authentication = ({ navigation }) => {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const [hasAnAccount, setHasAnAccount] = useState(true);
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
@@ -110,26 +110,29 @@ const Authentication = ({ navigation }) => {
 
 	return (
 		<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-			<LoginPage
-				userName={userName}
-				setUserName={setUserName}
-				password={password}
-				setPassword={setPassword}
-				handleSignIn={handleSignIn}
-				signInWithGoogle={signInWithGoogle}
-				signInWithFacebook={signInWithFacebook}
-			/>
-			<SignUpPage
-				userName={userName}
-				setUserName={setUserName}
-				password={password}
-				setPassword={setPassword}
-				email={email}
-				setEmail={setEmail}
-				handleSignUp={handleSignUp}
-				signInWithGoogle={signInWithGoogle}
-				signInWithFacebook={signInWithFacebook}
-			/>
+			{isLoggedIn ? (
+				<LoginPage
+					userName={userName}
+					setUserName={setUserName}
+					password={password}
+					setPassword={setPassword}
+					handleSignIn={handleSignIn}
+					signInWithGoogle={signInWithGoogle}
+					signInWithFacebook={signInWithFacebook}
+				/>
+			) : (
+				<SignUpPage
+					userName={userName}
+					setUserName={setUserName}
+					password={password}
+					setPassword={setPassword}
+					email={email}
+					setEmail={setEmail}
+					handleSignUp={handleSignUp}
+					signInWithGoogle={signInWithGoogle}
+					signInWithFacebook={signInWithFacebook}
+				/>
+			)}
 		</View>
 	);
 };

@@ -6,8 +6,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import OnBoardingUi from "./app/screens/OnBoardingUi";
-import AuthenticationScreen from "./app/screens/AuthenticationScreen";
 import CustomBottomTab from "./app/pages/CustomBottomTab";
+import ProfileScreen from "./app/screens/ProfileScreen";
+import Authentication from "./app/Authentication";
 
 const Stack = createStackNavigator();
 
@@ -52,7 +53,7 @@ export default function App() {
 			<NavigationContainer>
 				<Stack.Navigator headerMode="none">
 					<Stack.Screen name="LandingScreen" component={OnBoardingUi} />
-					<Stack.Screen name="LoginPage" component={AuthenticationScreen} />
+					<Stack.Screen name="LoginPage" component={Authentication} />
 					<Stack.Screen name="CustomBottomTab" component={CustomBottomTab} />
 				</Stack.Navigator>
 			</NavigationContainer>
