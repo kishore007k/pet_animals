@@ -15,13 +15,12 @@ const CustomSmallButton = ({
 				style={{
 					backgroundColor,
 					paddingHorizontal: 5,
-					borderRadius: 10,
+					paddingVertical: 5,
+					borderRadius: 5,
 				}}
 			>
 				<Text
 					style={{
-						paddingTop: 5,
-						paddingBottom: 5,
 						fontSize,
 						fontWeight,
 						color,

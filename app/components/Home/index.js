@@ -15,8 +15,9 @@ import colors from "../../assets/constants/colors";
 import fonts from "../../assets/constants/fonts";
 
 import styles from "./style";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
-const { width } = Dimensions.get("screen");
+const { width, height } = Dimensions.get("screen");
 
 const HomePage = ({ navigation }) => {
 	const DATA = [
@@ -46,6 +47,24 @@ const HomePage = ({ navigation }) => {
 		},
 	];
 
+	const categoriesData = [
+		{
+			image: require("../../assets/images/categories/dog.png"),
+			title: "Dog",
+			key: "1",
+		},
+		{
+			image: require("../../assets/images/categories/cat.png"),
+			title: "Cat",
+			key: "2",
+		},
+		{
+			image: require("../../assets/images/categories/parrot.png"),
+			title: "parrot",
+			key: "3",
+		},
+	];
+
 	const scrollX = useRef(new Animated.Value(0)).current;
 
 	const Indicator = ({ scrollX }) => {
@@ -59,12 +78,6 @@ const HomePage = ({ navigation }) => {
 						(i + 1) * width,
 						(i + 2) * width,
 					];
-
-					const dotWidth = scrollX.interpolate({
-						inputRange,
-						outputRange: [10, 10, 20, 10, 10],
-						extrapolate: "clamp",
-					});
 
 					const backgroundColor = scrollX.interpolate({
 						inputRange,
@@ -80,12 +93,11 @@ const HomePage = ({ navigation }) => {
 						<Animated.View
 							key={`indicator-${i}`}
 							style={{
-								height: 10,
-								width: 10,
-								width: dotWidth,
+								height: 8,
+								width: 8,
 								borderRadius: 5,
 								backgroundColor,
-								margin: 10,
+								margin: 8,
 							}}
 						/>
 					);
@@ -102,114 +114,205 @@ const HomePage = ({ navigation }) => {
 				barStyle={"dark-content"}
 				hidden={false}
 			/>
-			<View style={styles.topImageBg}>
-				<LinearGradient colors={colors.lightBlueGradient} style={styles.gradient}>
-					<Image
-						source={require("../../assets/images/homePet.png")}
-						style={styles.homePet}
-					/>
+			<ScrollView>
+				<View style={{ width, minHeight: height }}>
+					<LinearGradient colors={colors.lightBlueGradient} style={styles.gradient}>
+						<Image
+							source={require("../../assets/images/homePet.png")}
+							style={styles.homePet}
+						/>
 
-					<View style={styles.mainWrapper}>
-						<View style={styles.subWrapper}>
-							<View style={styles.locationAndIcon}>
-								<View>
-									<Image
-										source={require("../../assets/Icons/location.png")}
-										style={styles.locationIcon}
-									/>
-								</View>
-								<View style={styles.locationContainer}>
-									<Text style={styles.location}>Location</Text>
-									<View style={styles.locationAndArrow}>
-										<Text style={styles.locationDropBox}>Chennai</Text>
+						<View style={styles.mainWrapper}>
+							<View style={styles.subWrapper}>
+								<View style={styles.locationAndIcon}>
+									<View>
 										<Image
-											source={require("../../assets/Icons/arrowDown.png")}
-											style={styles.downArrow}
+											source={require("../../assets/Icons/location.png")}
+											style={styles.locationIcon}
 										/>
+									</View>
+									<View style={styles.locationContainer}>
+										<Text style={styles.location}>Location</Text>
+										<View style={styles.locationAndArrow}>
+											<Text style={styles.locationDropBox}>Chennai</Text>
+											<Image
+												source={require("../../assets/Icons/arrowDown.png")}
+												style={styles.downArrow}
+											/>
+										</View>
+									</View>
+								</View>
+							</View>
+
+							<View style={styles.chatAndNot}>
+								<Image
+									source={require("../../assets/Icons/chatIcon.png")}
+									style={styles.chatIcon}
+								/>
+								<TouchableOpacity>
+									<Image source={require("../../assets/Icons/notificationIcon.png")} />
+								</TouchableOpacity>
+							</View>
+						</View>
+					</LinearGradient>
+
+					<View style={styles.inputContainer}>
+						<View style={styles.input}>
+							<TextInput
+								style={styles.textInput}
+								placeholder="Search"
+								placeholderTextColor={colors.greyText}
+								onFocus={() => navigation.navigate("SearchPage")}
+							/>
+							<Image
+								source={require("../../assets/Icons/searchIcon.png")}
+								style={styles.searchIcon}
+							/>
+						</View>
+					</View>
+
+					<View>
+						<Text style={styles.cardTitle}>Best Selling</Text>
+						{/* Here it should be loaded dynamically */}
+						<View style={styles.cardContainer}>
+							<Animated.FlatList
+								horizontal
+								pagingEnabled
+								showsHorizontalScrollIndicator={false}
+								bounces={false}
+								onScroll={Animated.event(
+									[{ nativeEvent: { contentOffset: { x: scrollX } } }],
+									{ useNativeDriver: false }
+								)}
+								scrollEventThrottle={1}
+								data={DATA}
+								renderItem={({ item }) => {
+									return (
+										<View key={item.key}>
+											<Image source={item.image} style={styles.flatListImage} />
+											<View style={styles.cardContents}>
+												<View style={styles.cardContentsBgColor} />
+												<Text style={styles.cardContentsTitle}>{item.title}</Text>
+												<View style={styles.cardContentsStarsContainer}>
+													<View style={styles.startContainer}>
+														<TouchableOpacity>
+															<Image
+																source={require("../../assets/Icons/activeStar.png")}
+																style={styles.cardContentsStars}
+															/>
+														</TouchableOpacity>
+														<TouchableOpacity>
+															<Image
+																source={require("../../assets/Icons/activeStar.png")}
+																style={styles.cardContentsStars}
+															/>
+														</TouchableOpacity>
+														<TouchableOpacity>
+															<Image
+																source={require("../../assets/Icons/activeStar.png")}
+																style={styles.cardContentsStars}
+															/>
+														</TouchableOpacity>
+														<TouchableOpacity>
+															<Image
+																source={require("../../assets/Icons/activeStar.png")}
+																style={styles.cardContentsStars}
+															/>
+														</TouchableOpacity>
+														<TouchableOpacity>
+															<Image
+																source={require("../../assets/Icons/inActiveStar.png")}
+																style={styles.cardContentsStars}
+															/>
+														</TouchableOpacity>
+													</View>
+													<View style={styles.cardBottomContainer}>
+														<CustomSmallButton
+															buttonText="Buy Now"
+															backgroundColor={colors.white}
+															color={colors.black}
+															fontWeight={fonts.fontWeight.semiBold}
+															fontSize={fonts.smallText}
+														/>
+														<Indicator scrollX={scrollX} />
+
+														<TouchableOpacity>
+															<Image
+																source={require("../../assets/Icons/heart.png")}
+																style={styles.cardBottomContainerHeart}
+															/>
+														</TouchableOpacity>
+													</View>
+												</View>
+											</View>
+										</View>
+									);
+								}}
+							/>
+							{/* <View style={styles.pagination}>
+							<Indicator scrollX={scrollX} />
+						</View> */}
+						</View>
+					</View>
+
+					<View>
+						<Text style={styles.cardTitle}>Categories</Text>
+						<View style={styles.categoriesContainer}>
+							{categoriesData.map((category) => {
+								return (
+									<TouchableOpacity key={category.key} style={{ alignItems: "center" }}>
+										<Image source={category.image} style={styles.categoriesImage} />
+										<Text>{category.title}</Text>
+									</TouchableOpacity>
+								);
+							})}
+						</View>
+					</View>
+
+					<View>
+						<Text style={styles.cardTitle}>Consult a vet</Text>
+						<View>
+							<Image
+								source={require("../../assets/images/doctor.png")}
+								style={styles.flatListImage}
+							/>
+							<View style={styles.consultCardContainer}>
+								<View style={styles.consultCardBg} />
+								<View style={styles.consultCardContent}>
+									<View style={styles.consultCardText}>
+										<Text style={styles.consultCardMainTitle}>Talk to Experts</Text>
+										<Text style={styles.consultCardSubTitle}>
+											Connect online with our experienced vets
+										</Text>
+									</View>
+									<View>
+										<TouchableOpacity>
+											<View style={styles.viewBtnContainer}>
+												<Text style={styles.viewBtnText}>View</Text>
+											</View>
+										</TouchableOpacity>
 									</View>
 								</View>
 							</View>
 						</View>
-
-						<View style={styles.chatAndNot}>
-							<Image
-								source={require("../../assets/Icons/chatIcon.png")}
-								style={styles.chatIcon}
-							/>
-							<Image source={require("../../assets/Icons/notificationIcon.png")} />
-						</View>
 					</View>
-				</LinearGradient>
 
-				<View style={styles.inputContainer}>
-					<View style={styles.input}>
-						<TextInput
-							style={styles.textInput}
-							placeholder="Search"
-							placeholderTextColor={colors.greyText}
-							onFocus={() => navigation.navigate("SearchPage")}
-						/>
-						<Image
-							source={require("../../assets/Icons/searchIcon.png")}
-							style={styles.searchIcon}
-						/>
+					<View style={styles.connectContainer}>
+						<Text style={styles.connectText}>Join Us</Text>
+						<TouchableOpacity>
+							<Text style={styles.connectSmallText}>Sell Pets</Text>
+						</TouchableOpacity>
+						<View style={styles.dash} />
+						<TouchableOpacity>
+							<Text style={styles.connectSmallText}>Be a Delivery Agent</Text>
+						</TouchableOpacity>
+						<View style={styles.dash} />
+						<TouchableOpacity>
+							<Text style={styles.connectSmallText}>Treat Pets</Text>
+						</TouchableOpacity>
 					</View>
 				</View>
-
-				<View>
-					<Text style={styles.cardTitle}>Best Selling</Text>
-					{/* Here it should be loaded dynamically */}
-					<View style={styles.cardContainer}>
-						<Animated.FlatList
-							horizontal
-							pagingEnabled
-							showsHorizontalScrollIndicator={false}
-							bounces={false}
-							onScroll={Animated.event(
-								[{ nativeEvent: { contentOffset: { x: scrollX } } }],
-								{ useNativeDriver: false }
-							)}
-							scrollEventThrottle={1}
-							data={DATA}
-							renderItem={({ item }) => {
-								return (
-									<View key={item.key}>
-										<Image source={item.image} style={styles.flatListImage} />
-										<View style={styles.cardContents}>
-											<View style={styles.cardContentsBgColor} />
-											<Text style={styles.cardContentsTitle}>{item.title}</Text>
-											<View style={styles.cardContentsStarsContainer}>
-												<Image
-													source={require("../../assets/Icons/activeStar.png")}
-													style={styles.cardContentsStars}
-												/>
-												<View style={styles.cardBottomContainer}>
-													<CustomSmallButton
-														buttonText="Buy Now"
-														backgroundColor={colors.white}
-														color={colors.black}
-														fontWeight={fonts.fontWeight.semiBold}
-														fontSize={fonts.smallText}
-													/>
-													<Indicator scrollX={scrollX} />
-
-													<Image
-														source={require("../../assets/Icons/heart.png")}
-														style={styles.cardBottomContainerHeart}
-													/>
-												</View>
-											</View>
-										</View>
-									</View>
-								);
-							}}
-						/>
-						{/* <View style={styles.pagination}>
-							<Indicator scrollX={scrollX} />
-						</View> */}
-					</View>
-				</View>
-			</View>
+			</ScrollView>
 		</View>
 	);
 };

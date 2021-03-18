@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-
-// These are all the fonts and colors
-import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+
+// This is to load Custom Fonts
+import * as Font from "expo-font";
+
+// These are all Screens
 import OnBoardingUi from "./app/screens/OnBoardingUi";
 import CustomBottomTab from "./app/pages/CustomBottomTab";
 import ProfileScreen from "./app/screens/ProfileScreen";
