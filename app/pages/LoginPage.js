@@ -17,7 +17,7 @@ import CustomButton from "../components/CustomButton";
 const appId = "1836177906531228";
 
 const LoginPage = ({ navigation }) => {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
 	const [email, setEmail] = useState("");

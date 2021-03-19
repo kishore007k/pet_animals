@@ -8,7 +8,6 @@ import {
 	SafeAreaView,
 	StyleSheet,
 } from "react-native";
-``;
 
 const Profile = () => {
 	return (
@@ -19,7 +18,13 @@ const Profile = () => {
 						<View style={{ alignItems: "center" }}>
 							<Image
 								source={require("../assets/images/profileImg.png")}
-								style={{ marginTop: -60 }}
+								style={{
+									marginTop: -60,
+									borderRadius: 100,
+									resizeMode: "cover",
+									width: 135,
+									height: 135,
+								}}
 							/>
 						</View>
 

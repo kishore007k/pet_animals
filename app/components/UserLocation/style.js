@@ -7,6 +7,7 @@ export default styles = StyleSheet.create({
 		width: "100%",
 		height: "100%",
 		padding: 20,
+		backgroundColor: colors.white,
 	},
 	mainTitle: {
 		fontSize: fonts.h2,

@@ -68,7 +68,8 @@ export default styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	chatIcon: {
-		left: 30,
+		left: 10,
+		zIndex: 5,
 	},
 	inputContainer: {
 		backgroundColor: colors.white,

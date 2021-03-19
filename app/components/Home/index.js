@@ -124,31 +124,35 @@ const HomePage = ({ navigation }) => {
 
 						<View style={styles.mainWrapper}>
 							<View style={styles.subWrapper}>
-								<View style={styles.locationAndIcon}>
-									<View>
-										<Image
-											source={require("../../assets/Icons/location.png")}
-											style={styles.locationIcon}
-										/>
-									</View>
-									<View style={styles.locationContainer}>
-										<Text style={styles.location}>Location</Text>
-										<View style={styles.locationAndArrow}>
-											<Text style={styles.locationDropBox}>Chennai</Text>
+								<TouchableOpacity onPress={() => navigation.navigate("Location")}>
+									<View style={styles.locationAndIcon}>
+										<View>
 											<Image
-												source={require("../../assets/Icons/arrowDown.png")}
-												style={styles.downArrow}
+												source={require("../../assets/Icons/location.png")}
+												style={styles.locationIcon}
 											/>
 										</View>
+										<View style={styles.locationContainer}>
+											<Text style={styles.location}>Location</Text>
+											<View style={styles.locationAndArrow}>
+												<Text style={styles.locationDropBox}>Chennai</Text>
+												<Image
+													source={require("../../assets/Icons/arrowDown.png")}
+													style={styles.downArrow}
+												/>
+											</View>
+										</View>
 									</View>
-								</View>
+								</TouchableOpacity>
 							</View>
 
 							<View style={styles.chatAndNot}>
-								<Image
-									source={require("../../assets/Icons/chatIcon.png")}
-									style={styles.chatIcon}
-								/>
+								<TouchableOpacity onPress={() => navigation.navigate("Chat")}>
+									<Image
+										source={require("../../assets/Icons/chatIcon.png")}
+										style={styles.chatIcon}
+									/>
+								</TouchableOpacity>
 								<TouchableOpacity>
 									<Image source={require("../../assets/Icons/notificationIcon.png")} />
 								</TouchableOpacity>

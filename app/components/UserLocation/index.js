@@ -20,7 +20,7 @@ const UserLocation = () => {
 				<Text style={styles.mainTitle}>User Location</Text>
 				<View style={styles.inputContainer}>
 					<Image
-						source={require("../../assets/images/search_icon.png")}
+						source={require("../../assets/Icons/searchIcon.png")}
 						style={styles.searchIcon}
 					/>
 					<TextInput
