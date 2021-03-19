@@ -13,43 +13,39 @@ import styles from "./style";
 const chatArray = [
 	{
 		image: require("../../assets/images/chats/person1.png"),
-		title: "Lorem1",
-		para:
-			"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo",
+		title: "Kishore",
+		para: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
 		time: "2 min",
 		read: true,
 		key: "1",
 	},
 	{
 		image: require("../../assets/images/chats/person2.png"),
-		title: "Lorem2",
-		para:
-			"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo",
+		title: "Kumar",
+		para: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
 		time: "2 min",
 		read: true,
 		key: "2",
 	},
 	{
 		image: require("../../assets/images/chats/person3.png"),
-		title: "Lorem3",
-		para:
-			"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo",
+		title: "Abi",
+		para: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
 		time: "2 min",
 		read: false,
 		key: "3",
 	},
 	{
 		image: require("../../assets/images/chats/person4.png"),
-		title: "Lorem4",
-		para:
-			"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo",
+		title: "Mash",
+		para: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam",
 		time: "2 min",
 		read: false,
 		key: "4",
 	},
 ];
 
-const ChatPage = ({ navigation }) => {
+const Messages = ({ navigation }) => {
 	const [searchText, setSearchText] = useState("");
 
 	return (
@@ -78,7 +74,9 @@ const ChatPage = ({ navigation }) => {
 						return (
 							<TouchableOpacity
 								key={item.key}
-								onPress={() => navigation.navigate("IndividualChat")}
+								onPress={() =>
+									navigation.navigate("ChatScreen", { userName: item.title })
+								}
 							>
 								<View
 									style={
@@ -104,4 +102,4 @@ const ChatPage = ({ navigation }) => {
 		</View>
 	);
 };
-export default ChatPage;
+export default Messages;

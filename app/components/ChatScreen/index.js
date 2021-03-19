@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const IndividualChatPage = (props) => (
+const ChatScreen = (props) => (
 	<View style={styles.container}>
-		<Text>IndividualChatPage</Text>
+		<Text>ChatScreen</Text>
 	</View>
 );
-export default IndividualChatPage;
+export default ChatScreen;
 
 const styles = StyleSheet.create({
 	container: {
